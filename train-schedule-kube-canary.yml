@@ -9,7 +9,7 @@ spec:
   ports:
   - protocol: TCP
     port: 8080
-    nodePort: 8080
+    nodePort: 8081
 
 ---
 
@@ -20,16 +20,16 @@ metadata:
   labels:
     app: train-schedule
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: train-schedule
-      track: stable
+      track: canary
   template:
     metadata:
       labels:
         app: train-schedule
-        track: stable
+        track: canary
     spec:
       containers:
       - name: train-schedule
